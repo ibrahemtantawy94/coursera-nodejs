@@ -2,11 +2,15 @@ const express = require('express');
 const http = require('http');
 const hostName = 'localhost';
 const portNumber = 3000;
-
+const morgan = require('morgan');
 const app = express();
+app.use(morgan('dev'));
+
+app.use(express.static(__dirname + '/public'));
 
 app.use((request, response, next) => {
-    console.log(request.headers);
+    // console.log(request.headers);
+
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/html');
     response.end('<html><head></head><body><h1>This is an express server</h1></body></html>');
