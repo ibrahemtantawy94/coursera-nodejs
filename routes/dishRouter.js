@@ -24,6 +24,8 @@ dishRouter.route('/')
     respose.end('will delete all dishes');
 });
 
+// single dish route
+
 dishRouter.route('/:dishId')
 .get((request,respose,next) => {
     respose.end('Will send details of the dish: ' + request.params.dishId +' to you!');

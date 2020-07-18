@@ -5,7 +5,11 @@ const portNumber = 3000;
 const morgan = require('morgan');
 const app = express();
 const bodyParser = require('body-parser');
+
+// Routes
 const dishRouter = require('./routes/dishRouter');
+const promoRouter = require('./routes/promoRouter');
+const leaderRouter = require('./routes/leaderRouter');
 
 app.use(morgan('dev'));
 
@@ -13,7 +17,10 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json());
 
+// Routes
 app.use('/dishes', dishRouter);
+app.use('/promotions', promoRouter);
+app.use('/leaders', leaderRouter);
 
 app.use((request, response, next) => {
     // console.log(request.headers);
